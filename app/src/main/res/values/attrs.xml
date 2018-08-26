@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="background_color" format="reference|integer" />
+
+    <declare-styleable name="ItemSettingView">
+        <attr name="background_color" />
+        <attr name="left_drawable" format="reference|integer" />
+        <attr name="title_text" format="string" />
+        <attr name="title_text_color" format="color" />
+        <attr name="dec_visible" format="boolean" />
+        <attr name="dec_text_drawable" format="reference|integer" />
+        <attr name="dec_text" format="string" />
+        <attr name="dec_text_color" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="ItemEditView">
+        <attr name="background_color" />
+        <attr name="name_text" format="string" />
+        <attr name="name_text_color" format="color" />
+        <attr name="desc_hint_text" format="string" />
+        <attr name="desc_text_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="PayPsdInputView">
+
+        <attr name="maxCount" format="integer" />
+        <attr name="circleColor" format="color" />
+        <attr name="bottomLineColor" format="color" />
+        <attr name="radius" format="dimension" />
+        <attr name="divideLineWidth" format="dimension" />
+        <attr name="divideLineColor" format="color" />
+        <attr name="rectAngle" format="dimension" />
+        <attr name="focusedColor" format="color"/>
+        <attr name="psdType" format="enum">
+            <enum name="weChat" value="0" />
+            <enum name="bottomLine" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="RefreshListView">
+
+        <!-- 下拉刷新布局 -->
+        <attr name="pulldownRefreshLayout" format="reference" />
+        <!-- 加载更多布局 -->
+        <attr name="loadMoreLayout" format="reference" />
+        <!-- 是否显示下拉刷新 默认为不显示 -->
+        <attr name="showHeader" format="boolean" />
+        <!-- 是否显示加载更多 默认为不显示 -->
+        <attr name="showFooter" format="boolean" />
+        <!-- 下拉刷新显示文本 -->
+        <attr name="pulldownRefreshText" format="string" />
+        <!-- 释放刷新显示文件 -->
+        <attr name="releaseToRefreshText" format="string" />
+        <!-- 正在刷新显示文件 -->
+        <attr name="refreshingText" format="string" />
+        <!-- 最后刷新时间格式 -->
+        <attr name="lastRefreshTimeFormat" format="string" />
+        <!-- 加载更多显示的文本 -->
+        <attr name="loadMoreText" format="string" />
+    </declare-styleable>
+
+
+    <declare-styleable name="ItemCommentView">
+        <attr name="comment_nickname" format="string" />
+        <attr name="comment_content" format="string" />
+    </declare-styleable>
+
+</resources>

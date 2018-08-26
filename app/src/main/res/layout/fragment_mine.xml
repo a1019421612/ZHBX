@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:text="我的"
+        android:gravity="center"
+        android:textSize="@dimen/size_20"
+        />
+    <com.xzcy.zhbx.view.ItemSettingView
+        android:id="@+id/mine_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:background_color="@color/white"
+        app:dec_text_color="@color/shen_gray"
+        app:title_text="个人信息"
+        app:title_text_color="@color/gray_word" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="#F0F3FB"/>
+    <com.xzcy.zhbx.view.ItemSettingView
+        android:id="@+id/mine_reset_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/white"
+        app:dec_text_color="@color/shen_gray"
+        app:title_text="修改密码"
+        app:title_text_color="@color/gray_word" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="#F0F3FB"/>
+    <com.xzcy.zhbx.view.ItemSettingView
+        android:id="@+id/mine_edit_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/white"
+        app:dec_text_color="@color/shen_gray"
+        app:title_text="修改手机"
+        app:dec_text="15097371982"
+        app:title_text_color="@color/gray_word" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="#F0F3FB"/>
+    <com.xzcy.zhbx.view.ItemSettingView
+        android:id="@+id/mine_my_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_color="@color/white"
+        app:dec_text_color="@color/shen_gray"
+        app:title_text="我的工单"
+        app:title_text_color="@color/gray_word" />
+</LinearLayout>
