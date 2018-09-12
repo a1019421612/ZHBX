@@ -48,7 +48,7 @@
         app:background_color="@color/white"
         app:dec_text_color="@color/shen_gray"
         app:title_text="修改手机"
-        app:dec_text="15097371982"
+        app:dec_text=""
         app:title_text_color="@color/gray_word" />
     <View
         android:layout_width="match_parent"

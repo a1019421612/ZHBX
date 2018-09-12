@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xzcy.zhbx.R;
+import com.xzcy.zhbx.global.Constant;
+import com.xzcy.zhbx.utils.SPUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -124,5 +126,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         }
         return super.dispatchTouchEvent(ev);
+    }
+    public String getToken(){
+        String accessToken =(String) SPUtils.get(this, Constant.ACCESSTOKEN, "");
+        return accessToken;
     }
 }

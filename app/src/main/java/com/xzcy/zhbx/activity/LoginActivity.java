@@ -9,11 +9,21 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.coder.zzq.smartshow.toast.SmartToast;
+import com.xzcy.zhbx.MainActivity;
 import com.xzcy.zhbx.R;
+import com.xzcy.zhbx.global.Constant;
 import com.xzcy.zhbx.utils.RegexUtils;
+import com.xzcy.zhbx.utils.SPUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 public class LoginActivity extends BaseActivity {
     @BindView(R.id.tv_login)
@@ -55,7 +65,7 @@ public class LoginActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.tv_login:
                 if (check()){
-//                    loginLC(mPhone,mPassword);
+                    loginLC(mPhone,mPassword);
                 }
                 break;
             case R.id.forgetPasswordTextView:
@@ -65,6 +75,39 @@ public class LoginActivity extends BaseActivity {
                     break;
         }
     }
+
+    private void loginLC(String mPhone, String mPassword) {
+        OkHttpUtils
+                .post()
+                .url(Constant.LOGIN)
+                .addParams("username",mPhone)
+                .addParams("password",mPassword)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        SmartToast.show("网络请求失败");
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject jsonObject=new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            if (success){
+                                String data = jsonObject.getString("data");
+                                SPUtils.put(LoginActivity.this,Constant.ACCESSTOKEN,data);
+                                SPUtils.put(LoginActivity.this,Constant.ISLOGIN,true);
+                                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
     private boolean check() {
         passwordTextInputLayout.setErrorEnabled(false);
         phoneTextInputLayout.setErrorEnabled(false);
@@ -73,10 +116,7 @@ public class LoginActivity extends BaseActivity {
         mPassword = passwordEditText.getText().toString();
 
         if (TextUtils.isEmpty(mPhone)) {
-            phoneTextInputLayout.setError("请输入手机号");
-            return false;
-        } else if (!RegexUtils.isMobile(mPhone)) {
-            phoneTextInputLayout.setError("请输入有效的手机号");
+            phoneTextInputLayout.setError("请输入用户名");
             return false;
         }
         if (TextUtils.isEmpty(mPassword)) {
