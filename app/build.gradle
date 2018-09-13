@@ -33,11 +33,10 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
     implementation 'com.zhy:okhttputils:2.6.2'
     compile('com.github.the-pig-of-jungle:SmartShow:v1.0.3') {
-
         //去除design包的依赖，其一，你不一定用到SmartSnackbar；其二，你项目使用的版本不一定和库中所用相同
-
         exclude group: 'com.android.support'
 
     }
     implementation files('libs/gson-2.3.1.jar')
+    implementation 'com.jph.takephoto:takephoto_library:4.0.3'
 }

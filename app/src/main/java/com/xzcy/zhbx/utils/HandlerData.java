@@ -9,13 +9,25 @@ import com.xzcy.zhbx.MyApplication;
 import com.xzcy.zhbx.activity.LoginActivity;
 import com.xzcy.zhbx.bean.BaseBean;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class HandlerData {
-    public static void handlerData(Activity activity, String data){
-        BaseBean baseBean = new Gson().fromJson(data, BaseBean.class);
-        if (baseBean.code==403){
-            activity.startActivity(new Intent(activity,LoginActivity.class));
-            MyApplication.finishAllActivity();
-            return;
+
+    public static void requestIsSucess(Activity activity, String data){
+        String resultjson="";
+        JSONObject jsonObject;
+        try {
+            jsonObject = new JSONObject(data);
+            int code = jsonObject.getInt("code");
+            if (code==403){
+                activity.startActivity(new Intent(activity,LoginActivity.class));
+                MyApplication.finishAllActivity();
+                return;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
     }
 }

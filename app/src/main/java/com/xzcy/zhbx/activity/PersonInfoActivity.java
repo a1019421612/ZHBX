@@ -15,6 +15,8 @@ import com.xzcy.zhbx.utils.HandlerData;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -63,7 +65,7 @@ public class PersonInfoActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        HandlerData.handlerData(PersonInfoActivity.this,response);
+                        HandlerData.requestIsSucess(PersonInfoActivity.this,response);
                         OrganizeListBean organizeListBean = new Gson().fromJson(response, OrganizeListBean.class);
                         if (organizeListBean.success){
                             children = organizeListBean.data.get(0).children;
@@ -95,19 +97,18 @@ public class PersonInfoActivity extends BaseActivity {
                 .addHeader(Constant.ACCESSTOKEN,getToken())
                 .url(Constant.EDITINFO)
                 .addParams("phone",phone)
-                .addParams("password","")
                 .addParams("organize",organizeId)
                 .addParams("name",name)
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-
+                        SmartToast.show("网络连接错误");
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
-
+                        HandlerData.requestIsSucess(PersonInfoActivity.this,response);
                     }
                 });
 

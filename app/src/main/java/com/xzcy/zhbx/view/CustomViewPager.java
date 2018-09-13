@@ -286,7 +286,7 @@ public class CustomViewPager extends LinearLayout {
             if (mImageViewCacheList.isEmpty()) {
                 imageView = new ImageView(mContext);
                 imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-                imageView.setPadding(50,0,50,0);
+                imageView.setPadding(0,0,0,0);
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 //                Glide.with(mContext).load(mAdList.get(position)).into(imageView);
                 // 设置图片点击监听

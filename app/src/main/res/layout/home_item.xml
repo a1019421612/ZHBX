@@ -10,19 +10,24 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/hoem_item_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="[紧急]"
+            android:textColor="#666666"
+            android:text="---"
             />
         <TextView
+            android:id="@+id/tv_home_item_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="666666电话拨打有噪音，请及时检查问题！"/>
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="--"/>
     </LinearLayout>
     <TextView
+        android:id="@+id/tv_home_item_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="2018.7.28"
+        android:text="---"
         android:gravity="right"
         />
     <View

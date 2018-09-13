@@ -19,7 +19,6 @@
             android:id="@+id/tv_order_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_10"
             android:text="---"/>
     </LinearLayout>
     <LinearLayout
@@ -35,12 +34,12 @@
             android:text="---"
             />
         <TextView
-            android:id="@+id/tv_order_do"
+            android:id="@+id/tv_order_receiver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_btn_n"
             android:textColor="@color/white"
-            android:text="处理"
+            android:text="接收"
             android:paddingLeft="@dimen/dp_10"
             android:paddingRight="@dimen/dp_10"
             android:paddingTop="@dimen/dp_4"

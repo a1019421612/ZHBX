@@ -23,7 +23,9 @@
         <activity android:name=".activity.MessageActivity" />
         <activity android:name=".activity.MessageDetailActivity" />
         <activity android:name=".activity.OrderDetailActivity" />
-        <activity android:name=".activity.HandleOrderActivity" />
+        <activity android:name=".activity.HandleOrderActivity" >
+
+        </activity>
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/bt_paizhao_dialig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="拍照"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/bt_tuku_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:text="图库"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/bt_quxiao_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/qian_blue"
+        android:text="取消"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+</LinearLayout>

@@ -1,47 +1,68 @@
 package com.xzcy.zhbx.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.coder.zzq.smartshow.toast.SmartToast;
+import com.google.gson.Gson;
 import com.xzcy.zhbx.R;
 import com.xzcy.zhbx.activity.MessageActivity;
 import com.xzcy.zhbx.adapter.HomeAdapter;
 import com.xzcy.zhbx.bean.HomeBean;
+import com.xzcy.zhbx.bean.HomeWorkBean;
+import com.xzcy.zhbx.global.Constant;
+import com.xzcy.zhbx.utils.HandlerData;
 import com.xzcy.zhbx.utils.PicUtils;
+import com.xzcy.zhbx.utils.SPUtils;
 import com.xzcy.zhbx.utils.StringUtil;
 import com.xzcy.zhbx.view.CustomViewPager;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+
 public class HomeFragment extends Fragment {
     private RecyclerView rv_home;
     private CustomViewPager viewpager;
+    private SwipeRefreshLayout swipe;
 
-    private List<HomeBean> mList=new ArrayList<>();
+    private List<HomeWorkBean.Data.Content> mList=new ArrayList<>();
     private HomeAdapter adapter;
     private ArrayList<String> imageUrl=new ArrayList<>();
     private ImageView iv_msg;
+    private String accessToken;
+    private int mPage = 0;
+    private int mSize = 10;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home, container, false);
-
-        imageUrl.add("http://api.abcky.site:81/wuyue/api/img/show?id=5b6b0b6cd06bee5473987669");
-        imageUrl.add("http://api.abcky.site:81/wuyue/api/img/show?id=5b6b0b6cd06bee5473987669");
-        imageUrl.add("http://api.abcky.site:81/wuyue/api/img/show?id=5b6b0b6cd06bee5473987669");
+        accessToken = (String) SPUtils.get(getActivity(), Constant.ACCESSTOKEN, "");
+        imageUrl.add("http://www.wuyueapp.com/wuyueTest//api/img/show?id=5b694a0b00be4526acf029da");
+        imageUrl.add("http://www.wuyueapp.com/wuyueTest/api/img/show?id=5b6949ff00be4526acf029d8");
+        imageUrl.add("http://www.wuyueapp.com/wuyueTest/api/img/show?id=5b69499a00be4526acf029d4");
         rv_home=view.findViewById(R.id.rv_home);
+        swipe=view.findViewById(R.id.swipe);
+        //设置下拉颜色
+        swipe.setColorSchemeColors(Color.rgb(47, 223, 189));
         LinearLayoutManager manager=new LinearLayoutManager(getActivity());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         rv_home.setLayoutManager(manager);
@@ -49,14 +70,69 @@ public class HomeFragment extends Fragment {
         rv_home.setAdapter(adapter);
         adapter.addHeaderView(getHeaderView());
         viewpager.setImageResources(imageUrl, mAdCycleViewListener);
-        for (int i = 0; i < 10; i++) {
-            HomeBean homeBean=new HomeBean();
-            homeBean.setName(i+"");
-            mList.add(homeBean);
-        }
-        adapter.notifyDataSetChanged();
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPage=0;
+//                getStock(type,true);
+                initData(true);
+            }
+        });
+        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                mPage++;
+                initData(false);
+            }
+        },rv_home);
+
+        initData(true);
+
         return view;
     }
+
+    private void initData(final boolean refresh) {
+        OkHttpUtils
+                .get()
+                .addHeader(Constant.ACCESSTOKEN,accessToken)
+                .url(Constant.WORKORDER)
+                .addParams("happening","1")
+//                .addParams("type","")
+                .addParams("size",mSize+"")
+//                .addParams("title","")
+                .addParams("page",mPage+"")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        SmartToast.show("网络连接错误");
+                        swipe.setRefreshing(false);
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        HandlerData.requestIsSucess(getActivity(),response);
+                        Log.e("sss",response);
+                        adapter.loadMoreComplete();
+                        swipe.setRefreshing(false);
+                        HomeWorkBean homeWorkBean = new Gson().fromJson(response, HomeWorkBean.class);
+                        Boolean success = homeWorkBean.success;
+                        if (success){
+                            int total = homeWorkBean.data.total;
+                            List<HomeWorkBean.Data.Content> content = homeWorkBean.data.content;
+                            if (refresh){
+                                mList.clear();
+                            }
+                            mList.addAll(content);
+                            adapter.notifyDataSetChanged();
+                            if (mList.size()==total){
+                                adapter.loadMoreEnd();
+                            }
+                        }
+                    }
+                });
+    }
+
     private CustomViewPager.ImageCycleViewListener mAdCycleViewListener = new CustomViewPager.ImageCycleViewListener() {
         @Override
         public void onImageClick(int position, View imageView) {

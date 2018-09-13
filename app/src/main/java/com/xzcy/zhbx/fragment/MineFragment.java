@@ -17,6 +17,7 @@ import com.xzcy.zhbx.activity.EditPswActivity;
 import com.xzcy.zhbx.activity.PersonInfoActivity;
 import com.xzcy.zhbx.bean.InfoBean;
 import com.xzcy.zhbx.global.Constant;
+import com.xzcy.zhbx.utils.HandlerData;
 import com.xzcy.zhbx.utils.SPUtils;
 import com.xzcy.zhbx.view.ItemSettingView;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -28,7 +29,6 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import okhttp3.Call;
 
-import static com.xzcy.zhbx.utils.HandlerData.handlerData;
 
 public class MineFragment extends Fragment {
     @BindView(R.id.mine_info)
@@ -70,7 +70,7 @@ public class MineFragment extends Fragment {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        handlerData(getActivity(), response);
+                        HandlerData.requestIsSucess(getActivity(), response);
                         InfoBean infoBean = new Gson().fromJson(response, InfoBean.class);
                         Boolean success = infoBean.success;
                         if (success) {

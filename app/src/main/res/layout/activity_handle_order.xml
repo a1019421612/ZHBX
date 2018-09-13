@@ -186,7 +186,23 @@
                 android:hint="在此写下工作内容"
                 android:padding="@dimen/dp_10"
                 android:textSize="@dimen/sp_14" />
-
+            <TextView
+                android:id="@+id/tv_add_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:text="添加图片"/>
+            <GridView
+                android:id="@+id/gridView_image"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:horizontalSpacing="5dp"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="4"
+                android:scrollbars="none"
+                android:stretchMode="columnWidth"></GridView>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

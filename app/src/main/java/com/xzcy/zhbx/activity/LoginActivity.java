@@ -13,7 +13,6 @@ import com.coder.zzq.smartshow.toast.SmartToast;
 import com.xzcy.zhbx.MainActivity;
 import com.xzcy.zhbx.R;
 import com.xzcy.zhbx.global.Constant;
-import com.xzcy.zhbx.utils.RegexUtils;
 import com.xzcy.zhbx.utils.SPUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;

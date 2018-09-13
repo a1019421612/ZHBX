@@ -18,21 +18,23 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_order_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_20"
                 android:background="@color/white"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/dp_10"
-                android:text="10086电话拨打有噪音" />
+                android:text="---" />
 
             <TextView
+                android:id="@+id/tv_order_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:gravity="center_horizontal"
                 android:paddingBottom="@dimen/dp_10"
-                android:text="2018-6-6"
+                android:text="---"
                 android:textSize="@dimen/sp_12" />
 
             <LinearLayout
@@ -48,23 +50,26 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_pd_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="派单人：张雪" />
+                        android:text="派单人：---" />
 
                     <TextView
+                        android:id="@+id/tv_pd_org"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="部门：信息部" />
+                        android:text="部门：---" />
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_pd_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="联系方式：152241545454" />
+                    android:text="联系方式：---" />
             </LinearLayout>
 
             <LinearLayout
@@ -80,23 +85,26 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_jd_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="接单人：李列" />
+                        android:text="接单人：---" />
 
                     <TextView
+                        android:id="@+id/tv_jd_org"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="部门：技术部" />
+                        android:text="部门：---" />
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_jd_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="联系方式：152241545454" />
+                    android:text="联系方式：---" />
             </LinearLayout>
 
             <LinearLayout
@@ -112,23 +120,26 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_kh_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="客户：张三" />
+                        android:text="客户：---" />
 
                     <TextView
+                        android:id="@+id/tv_kh_org"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="部门：总经办" />
+                        android:text="部门：---" />
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_kh_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="联系方式：152241545454" />
+                    android:text="联系方式：---" />
             </LinearLayout>
 
             <LinearLayout
@@ -139,9 +150,10 @@
                 android:padding="@dimen/dp_10">
 
                 <TextView
+                    android:id="@+id/tv_order_num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="单号：0000561811" />
+                    android:text="单号：---" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -150,46 +162,67 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_order_type"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="工单类型：报修" />
+                        android:text="工单类型：---" />
 
                     <TextView
+                        android:id="@+id/tv_order_level"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="工单级别：紧急" />
+                        android:text="工单级别：---" />
                 </LinearLayout>
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="@dimen/dp_10"
-                android:text="主题：055668急需处理" />
+                android:text="主题：---" />
 
+            <TextView
+                android:id="@+id/tv_homework_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/dp_10"
+                android:text="作业内容：---" />
+
+            <TextView
+                android:id="@+id/tv_work_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/dp_10"
+                android:text="工作内容：---" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:padding="@dimen/dp_10"
-                android:text="作业内容：XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxxxxxxxxxxx" />
-
+                android:text="现场图片："/>
+            <GridView
+                android:id="@+id/gridView_image"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:horizontalSpacing="5dp"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="4"
+                android:scrollbars="none"
+                android:stretchMode="columnWidth"></GridView>
             <TextView
+                android:id="@+id/tv_use_device"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="@dimen/dp_10"
-                android:text="工作内容：XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxxxxxxxxxxx" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="@dimen/dp_10"
-                android:text="使用设备：使用白色电话线一根" />
+                android:text="使用设备：---" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -199,16 +232,19 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tv_person"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="操作人：张李" />
+                    android:visibility="gone"
+                    android:text="操作人：---" />
 
                 <TextView
+                    android:id="@+id/tv_time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="到场时间：2018-8-8" />
+                    android:text="到场时间：---" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
