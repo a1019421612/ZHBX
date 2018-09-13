@@ -66,7 +66,8 @@ public class OrderWaitdoFragment extends Fragment {
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(getActivity(),HandleOrderActivity.class));
+                startActivity(new Intent(getActivity(),HandleOrderActivity.class)
+                        .putExtra("orderId",mList.get(position).id));
             }
         });
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -132,5 +133,11 @@ public class OrderWaitdoFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData(true);
     }
 }

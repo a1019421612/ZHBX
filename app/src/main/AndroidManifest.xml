@@ -12,10 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".activity.LoginActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.ForgetPasswordActivityActivity" />
         <activity android:name=".activity.PersonInfoActivity" />
         <activity android:name=".activity.EditPswActivity" />
@@ -23,9 +21,7 @@
         <activity android:name=".activity.MessageActivity" />
         <activity android:name=".activity.MessageDetailActivity" />
         <activity android:name=".activity.OrderDetailActivity" />
-        <activity android:name=".activity.HandleOrderActivity" >
-
-        </activity>
+        <activity android:name=".activity.HandleOrderActivity"></activity>
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.FindActivity"></activity>
     </application>
 
 </manifest>

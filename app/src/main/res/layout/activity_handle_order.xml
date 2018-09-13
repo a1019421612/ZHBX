@@ -19,21 +19,23 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_order_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_20"
                 android:background="@color/white"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/dp_10"
-                android:text="10086电话拨打有噪音" />
+                android:text="---" />
 
             <TextView
+                android:id="@+id/tv_order_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:gravity="center_horizontal"
                 android:paddingBottom="@dimen/dp_10"
-                android:text="2018-6-6"
+                android:text="---"
                 android:textSize="@dimen/sp_12" />
 
             <LinearLayout
@@ -49,23 +51,26 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_pd_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="派单人：张雪" />
+                        android:text="派单人：---" />
 
                     <TextView
+                        android:id="@+id/tv_pd_org"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="部门：信息部" />
+                        android:text="部门：---" />
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_pd_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="联系方式：152241545454" />
+                    android:text="联系方式：---" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,23 +86,26 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_jd_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="接单人：李列" />
+                        android:text="接单人：---" />
 
                     <TextView
+                        android:id="@+id/tv_jd_org"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="部门：技术部" />
+                        android:text="部门：---" />
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_jd_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="联系方式：152241545454" />
+                    android:text="联系方式：---" />
             </LinearLayout>
 
             <LinearLayout
@@ -113,23 +121,26 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_kh_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="客户：张三" />
+                        android:text="客户：---" />
 
                     <TextView
+                        android:id="@+id/tv_kh_org"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="部门：总经办" />
+                        android:text="部门：---" />
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_kh_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="联系方式：152241545454" />
+                    android:text="联系方式：---" />
             </LinearLayout>
 
             <LinearLayout
@@ -140,9 +151,10 @@
                 android:padding="@dimen/dp_10">
 
                 <TextView
+                    android:id="@+id/tv_order_num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="单号：0000561811" />
+                    android:text="单号：---" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -151,34 +163,39 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_order_type"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="工单类型：报修" />
+                        android:text="工单类型：---" />
 
                     <TextView
+                        android:id="@+id/tv_order_level"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="工单级别：紧急" />
+                        android:text="工单级别：---" />
                 </LinearLayout>
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="@dimen/dp_10"
-                android:text="主题：055668急需处理" />
+                android:text="主题：---" />
 
             <TextView
+                android:id="@+id/tv_homework_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="@dimen/dp_10"
-                android:text="作业内容：XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxxxxxxxxxxx" />
+                android:text="作业内容：---" />
 
             <EditText
+                android:id="@+id/et_work_content"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="@dimen/dp_10"
@@ -204,6 +221,7 @@
                 android:scrollbars="none"
                 android:stretchMode="columnWidth"></GridView>
             <EditText
+                android:id="@+id/et_use_device"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="@dimen/dp_10"
@@ -222,6 +240,7 @@
                 android:textSize="@dimen/sp_12" />
 
             <EditText
+                android:id="@+id/et_exception"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dp_10"
@@ -235,6 +254,7 @@
                 android:padding="@dimen/dp_10"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/tv_person"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -242,27 +262,32 @@
                     android:gravity="center_horizontal"
                     android:padding="@dimen/dp_10"
                     android:layout_marginRight="@dimen/dp_20"
+                    android:visibility="gone"
                     android:text="请选择操作人"/>
                 <TextView
+                    android:id="@+id/tv_time"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shap_btn_gray_q"
                     android:gravity="center_horizontal"
                     android:padding="@dimen/dp_10"
-                    android:layout_marginLeft="@dimen/dp_20"
-                    android:text="请选择操作时间"/>
+                    android:hint="请选择操作时间"/>
             </LinearLayout>
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_submit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="提交"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:layout_margin="@dimen/dp_10"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/shap_btn_gray"
+                android:background="@drawable/shap_btn_green"
                 android:paddingLeft="@dimen/dp_20"
                 android:paddingRight="@dimen/dp_20"
-                android:paddingTop="@dimen/dp_4"
-                android:paddingBottom="@dimen/dp_4"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
                 />
         </LinearLayout>
     </ScrollView>
