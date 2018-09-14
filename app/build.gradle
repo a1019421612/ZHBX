@@ -38,5 +38,5 @@ dependencies {
     }
     implementation files('libs/gson-2.3.1.jar')
     implementation 'com.jph.takephoto:takephoto_library:4.0.3'
-    compile 'com.contrarywind:Android-PickerView:4.1.6'
+    implementation 'com.contrarywind:Android-PickerView:4.1.6'
 }
