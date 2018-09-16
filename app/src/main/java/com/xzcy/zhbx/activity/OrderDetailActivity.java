@@ -1,6 +1,7 @@
 package com.xzcy.zhbx.activity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -145,6 +146,16 @@ public class OrderDetailActivity extends BaseActivity {
                         tvUseDevice.setText("使用设备：" + orderDetailBean.data.tool);
 
                         tvTime.setText("到场时间：" + orderDetailBean.data.disposeTime);
+
+                        String files = orderDetailBean.data.files;
+                        if (!TextUtils.isEmpty(files)){
+                            String[] split = files.split(",");
+                            for (int i = 0; i < split.length; i++) {
+                                 String imageurl= Constant.IMAGEURL+split[i];
+                                 mList.add(imageurl);
+                            }
+                            mMyadapter.notifyDataSetChanged();
+                        }
                     }
                 });
 

@@ -12,6 +12,7 @@ public class Constant {
     public static final String ORDERDETAIL=BASEURL+"work/workOrder";//工单详情
     public static final String UPLOADIMAGES=BASEURL+"common/multiFileUpload";//上传图片
     public static final String SUBMITORDER=BASEURL+"app/modifyWorkOrder";//提交工单
+    public static final String IMAGEURL=BASEURL+"common/download/";//图片链接
 
     public static final String ACCESSTOKEN="accessToken";
     public static final String ISLOGIN="isLogin";
