@@ -94,11 +94,11 @@ public class MineFragment extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mine_info:
-                startActivity(new Intent(getActivity(), PersonInfoActivity.class)
+                startActivityForResult(new Intent(getActivity(), PersonInfoActivity.class)
                         .putExtra("phone", phone)
                         .putExtra("name", name)
                         .putExtra("organizeName", organizeName)
-                        .putExtra("organizeId", organizeId));
+                        .putExtra("organizeId", organizeId),100);
                 break;
             case R.id.mine_reset_psw:
                 startActivity(new Intent(getActivity(), EditPswActivity.class));
@@ -108,6 +108,13 @@ public class MineFragment extends Fragment {
                 break;
             case R.id.mine_my_order:
                 break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode==100){
+            initData();
         }
     }
 }

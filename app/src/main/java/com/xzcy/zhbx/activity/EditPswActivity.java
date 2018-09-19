@@ -8,8 +8,12 @@ import android.widget.EditText;
 import com.coder.zzq.smartshow.toast.SmartToast;
 import com.xzcy.zhbx.R;
 import com.xzcy.zhbx.global.Constant;
+import com.xzcy.zhbx.utils.HandlerData;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,23 +48,23 @@ public class EditPswActivity extends BaseActivity {
                 String oldPsw = etOldPsw.getText().toString().trim();
                 String newPsw = etNewPsw.getText().toString().trim();
                 String enterPsw = etEnterPsw.getText().toString().trim();
-                if (TextUtils.isEmpty(oldPsw)){
+                if (TextUtils.isEmpty(oldPsw)) {
                     SmartToast.show("旧密码不能为空");
                     return;
                 }
-                if (TextUtils.isEmpty(newPsw)){
+                if (TextUtils.isEmpty(newPsw)) {
                     SmartToast.show("新密码不能为空");
                     return;
                 }
-                if (TextUtils.isEmpty(enterPsw)){
+                if (TextUtils.isEmpty(enterPsw)) {
                     SmartToast.show("确认密码不能为空");
                     return;
                 }
-                if (!newPsw.equals(enterPsw)){
+                if (!newPsw.equals(enterPsw)) {
                     SmartToast.show("密码不一致");
                     return;
                 }
-                editPassword(oldPsw,newPsw);
+                editPassword(oldPsw, newPsw);
             }
         });
     }
@@ -68,20 +72,32 @@ public class EditPswActivity extends BaseActivity {
     private void editPassword(String oldPsw, String newPsw) {
         OkHttpUtils
                 .post()
-                .url("")
-                .addHeader(Constant.ACCESSTOKEN,getToken())
-                .addParams("","")
-                .addParams("","")
+                .url(Constant.MODIFYPASSWORD)
+                .addHeader(Constant.ACCESSTOKEN, getToken())
+                .addParams("password", oldPsw)
+                .addParams("newPassword", newPsw)
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-
+                        SmartToast.show("网络连接错误");
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
-
+                        HandlerData.requestIsSucess(EditPswActivity.this, response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            String msg = jsonObject.getString("msg");
+                            String code = jsonObject.getString("code");
+                            SmartToast.show(msg);
+                            if (code.equals("200")) {
+                                finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
 

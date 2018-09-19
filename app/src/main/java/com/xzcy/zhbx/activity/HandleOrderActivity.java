@@ -151,7 +151,9 @@ public class HandleOrderActivity extends BaseActivity implements TakePhoto.TakeR
                     public void onResponse(String response, int id) {
                         HandlerData.requestIsSucess(HandleOrderActivity.this, response);
                         OrderDetailBean orderDetailBean = new Gson().fromJson(response, OrderDetailBean.class);
-
+                        if (orderDetailBean.data==null){
+                            return;
+                        }
                         tvOrderTitle.setText(orderDetailBean.data.title);
                         tvOrderTime.setText(orderDetailBean.data.createTime);
 
@@ -422,7 +424,7 @@ public class HandleOrderActivity extends BaseActivity implements TakePhoto.TakeR
                                         JSONArray data = jsonObject.getJSONArray("data");
                                         String array_name="";
                                         for (int i = 0; i < data.length(); i++) {
-                                            String name = (String) data.get(0);
+                                            String name = (String) data.get(i);
                                             if (i==0){
                                                 array_name=name;
                                             }else {
@@ -445,7 +447,7 @@ public class HandleOrderActivity extends BaseActivity implements TakePhoto.TakeR
     private void submitOrder(String workContent, String useDevice, String exception,String time,String files) {
         OkHttpUtils
                 .post()
-                .url(Constant.SUBMITORDER)
+                .url(Constant.RECEIVERORDER)
                 .addHeader(Constant.ACCESSTOKEN,getToken())
                 .addParams("id",orderId)
                 .addParams("happening",2+"")

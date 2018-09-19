@@ -15,6 +15,7 @@ import com.xzcy.zhbx.utils.HandlerData;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -86,16 +87,19 @@ public class PersonInfoActivity extends BaseActivity {
         tvBaseSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editInfo();
+                String name = etInfoName.getText().toString().trim();
+                String phone = etInfoPhone.getText().toString().trim();
+
+                editInfo(phone,name,organizeId);
             }
         });
     }
 
-    private void editInfo() {
+    private void editInfo(String phone,String name,String organizeId) {
         OkHttpUtils
                 .post()
                 .addHeader(Constant.ACCESSTOKEN,getToken())
-                .url(Constant.EDITINFO)
+                .url(Constant.MODIFYUSERINFO)
                 .addParams("phone",phone)
                 .addParams("organize",organizeId)
                 .addParams("name",name)
@@ -109,6 +113,18 @@ public class PersonInfoActivity extends BaseActivity {
                     @Override
                     public void onResponse(String response, int id) {
                         HandlerData.requestIsSucess(PersonInfoActivity.this,response);
+                        try {
+                            JSONObject jsonObject=new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            if (success){
+                                String msg = jsonObject.getString("msg");
+                                SmartToast.show(msg);
+                                setResult(100);
+                                finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
 
@@ -126,7 +142,7 @@ public class PersonInfoActivity extends BaseActivity {
             return;
         }
         final String[] array_organize=new String[children.size()];
-        String[] array_organizeId=new String[children.size()];
+        final String[] array_organizeId=new String[children.size()];
         for (int i = 0; i < children.size(); i++) {
             array_organize[i]=children.get(i).name;
             array_organizeId[i]=children.get(i).id;
@@ -137,6 +153,7 @@ public class PersonInfoActivity extends BaseActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 String name = array_organize[i];
                 tvInfoOrganize.setText(name);
+                organizeId=array_organizeId[i];
                 dialogInterface.dismiss();
             }
         });
