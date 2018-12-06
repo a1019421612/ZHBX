@@ -214,7 +214,43 @@
 
             </RelativeLayout>
         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/seal_contacts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="3dp">
 
+            <RelativeLayout
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/tab_img_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="#ffffff"
+                    android:focusable="false"
+                    android:scaleType="centerInside" />
+                <!--android:src="@drawable/tab_find"-->
+
+                <TextView
+                    android:id="@+id/tab_text_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_below="@id/tab_img_contacts"
+                    android:layout_centerHorizontal="true"
+                    android:text="通讯录"
+                    android:textColor="#abadbb"
+                    android:textSize="12sp" />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 </LinearLayout>
