@@ -149,7 +149,7 @@ public class HomeFragment extends Fragment {
             // TODO 单击图片处理事件
             int curPos = viewpager.getCurPos();
             String url = imageUrl.get(curPos);
-            Toast.makeText(getActivity(), url, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), url, Toast.LENGTH_SHORT).show();
             if (StringUtil.isBlank(url)) {
                 return;
             }
