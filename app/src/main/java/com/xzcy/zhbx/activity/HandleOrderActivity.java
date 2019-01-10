@@ -400,14 +400,14 @@ public class HandleOrderActivity extends BaseActivity implements TakePhoto.TakeR
                 for (int i = 0; i < mList.size(); i++) {
                     File file = new File(mList.get(i));
                     String name = file.getName();
-                    post.addFile("files",name,file);
+                    post.addFile("file",name,file);
                     if (i==0){
                         array_name=name;
                     }else {
                         array_name=array_name+","+name;
                     }
                 }
-                post.url(Constant.UPLOADIMAGES).addHeader(Constant.ACCESSTOKEN,getToken()).addParams("files",array_name).build()
+                post.url(Constant.UPLOADIMAGES).addHeader(Constant.ACCESSTOKEN,getToken()).addParams("file",array_name).build()
                         .execute(new StringCallback() {
                             @Override
                             public void onError(Call call, Exception e, int id) {

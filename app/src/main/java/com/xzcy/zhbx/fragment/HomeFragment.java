@@ -128,7 +128,7 @@ public class HomeFragment extends Fragment {
                         HomeWorkBean homeWorkBean = new Gson().fromJson(response, HomeWorkBean.class);
                         Boolean success = homeWorkBean.success;
                         if (success) {
-                            int total = homeWorkBean.data.total;
+                            int total = homeWorkBean.data.totalElements;
                             List<HomeWorkBean.Data.Content> content = homeWorkBean.data.content;
                             if (refresh) {
                                 mList.clear();

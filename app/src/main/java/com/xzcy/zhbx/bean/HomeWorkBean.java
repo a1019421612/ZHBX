@@ -13,9 +13,9 @@ public class HomeWorkBean implements Serializable {
 
     public class Data implements Serializable {
 
-        public int total;
+        public int totalElements;
         public Pageable pageable;
-
+        public boolean last;
         public class Pageable implements Serializable {
 
             public int size;
