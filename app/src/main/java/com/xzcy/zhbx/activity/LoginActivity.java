@@ -93,12 +93,15 @@ public class LoginActivity extends BaseActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
+                            String msg = jsonObject.getString("msg");
                             if (success){
                                 String data = jsonObject.getString("data");
                                 SPUtils.put(LoginActivity.this,Constant.ACCESSTOKEN,data);
                                 SPUtils.put(LoginActivity.this,Constant.ISLOGIN,true);
                                 startActivity(new Intent(LoginActivity.this,MainActivity.class));
                                 finish();
+                            }else {
+                                SmartToast.show(msg);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
