@@ -1,7 +1,8 @@
 package com.xzcy.zhbx.global;
 
 public class Constant {
-    public static final String BASEURL="http://39.106.59.20:8888/";
+//    public static final String BASEURL="http://10.255.44.11:8888/";
+    public static final String BASEURL="http://192.168.31.145:8888/";
     public static final String LOGIN=BASEURL+"login";//登录
     public static final String USERINFO=BASEURL+"app/user/info";//用户信息接口
     public static final String WORKORDERTYPECOUNT=BASEURL+"app/work/workOrderTypeCount";//各状态工单数量

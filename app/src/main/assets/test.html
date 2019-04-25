@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GIS导航</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" charset="UTF-8" src="http://10.255.22.11:10080/api/init.js?v=1.0&appSecret=8926740ffb5914a2e578e7dfba6fdf12&appKey=cc4f6d3a867319247550f9bca8944d28"></script>
+<style type="text/css">
+.tool3{
+	top: 0px;
+	height: 61px;
+}
+input{height: 20px;
+    border: 1px solid #ccc;
+    width: 170px;
+}
+select{    
+	width: 238PX;
+    height: 25PX;
+        border: 1px solid #ccc;
+    }
+.center{
+    text-align: center;
+}
+.button{
+border: none;
+    width: 56px;
+    height: 28px;
+    background: #438ec3;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+#add{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: #fff;
+  /*   display: none; */
+}
+</style>
+</head>
+<body>
+	<div id="map" style="width: 100%, height:100%"></div>
+	<div id="add">
+		<form onclick="return false">
+		<table style="width:100%">
+			<tr>
+				<td>起点：<img onclick="startClick()"  style="vertical-align: bottom;cursor: pointer;" title="起点位置"></td>
+				<td>
+					<input id="start"/>
+				</td>
+			</tr>
+			<tr>
+				<td>终点：<img onclick="endClick()" style="vertical-align: bottom;cursor: pointer;" title="终点位置"></td>
+				<td>
+					<input id="end"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="center">
+					<button class="button" onclick="query()">查询</button>
+					<button type="reset" style="display:none;"></button>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	var BNMap=null;
+	var bNRoutePlanning=null;
+	require(["js/BNSymbol", "js/BNUtil", "js/BNFactory", "js/BNDirectorys",
+			"js/jquery-3.2.1.min" ], function(BNSymbol, util, BNFactory,
+			BNDirectorys) {
+		var Windowheight = $(window).height(); //拿到浏览器高度
+		bnSymbol=new BNSymbol(); //创建符号
+		$("#map").height(Windowheight);//从新定义地图高度
+		BNMap = new BNFactory(
+				"456", {
+					"id" : "map",
+					"options" : {
+						logo : false,
+						slider : false
+					}
+				}); //初始化航站楼5层地图
+				//var BNGeometry=new BNFactory("BNGeometry"); //创建Geometry
+		bNRoutePlanning=new BNFactory("BNRoutePlanning",BNMap);
+		var start=new Object();
+		var end=new Object();
+		startClick=function(){
+			BNMap.startDraw("point",function(data){
+				 //绘制完成后的回调函数
+				start.x=data.geometry.x;
+				start.y=data.geometry.y;
+				$("#start").val(data.geometry.x+","+data.geometry.y);
+				start.terminal="大场景";
+				start.floor="大场景";
+				 BNMap.stopDraw();//关闭绘制
+				});
+		};
+		endClick=function(){
+			BNMap.startDraw("point",function(data){
+				end.x=data.geometry.x;
+				end.y=data.geometry.y;
+				$("#end").val(data.geometry.x+","+data.geometry.y);
+				end.terminal="大场景";
+				end.floor="大场景";
+				BNMap.stopDraw();//关闭绘制
+			});
+		}
+		query=function(){
+			bNRoutePlanning.query(start,end);
+		}
+	});
+	
+</script>
+
+</html>

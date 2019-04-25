@@ -244,7 +244,7 @@
                     android:layout_marginTop="3dp"
                     android:layout_below="@id/tab_img_contacts"
                     android:layout_centerHorizontal="true"
-                    android:text="通讯录"
+                    android:text="地图"
                     android:textColor="#abadbb"
                     android:textSize="12sp" />
 
